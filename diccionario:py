@@ -1,0 +1,18 @@
+#esto es un diccionario donde se guardan los datos de las palabras 
+meme_dict = {
+            "CRINGE": "Algo excepcionalmente raro o embarazoso", # esto es el significado de la palabra en ""
+            "LOL": "Una respuesta común a algo gracioso",
+            }
+#esto es la orden del programa para decirle al usuario que ingrese una palabra que no entiendas con condiciones
+word = input("Escribe una palabra que no entiendas (¡con mayúsculas!): ")
+
+#esta parte del codigo hace que del diccionariom que tenemos con los datos ingresados se lo digan al usuarion con el comando print
+if word in meme_dict.keys():
+#aca le decimos a el usuario el significado de la palabra antes dicha
+    print(word)
+    # el comando else sirve por si no hay esa palabra en su base de datos , que le de otro respuesta diciendole lo que pasa
+else:
+
+    #aca le decimos al usuario que no ha esa palabra en el diccionario
+    print('Significado no encontrado')
+    # ¿Qué hacer si no se encuentra la palabra?
