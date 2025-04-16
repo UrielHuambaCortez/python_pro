@@ -84,6 +84,20 @@ async def funcion(ctx,*, mensaje: str):
     else:
         await ctx.send('No entiendo tu pregunta, pero espero ayudarte en algo más!')
 
+@bot.command()
+async def sumar(ctx, num1: str, num2: str):
+    try:
+        # Convertimos los argumentos a enteros
+        num1 = int(num1)
+        num2 = int(num2)
+        
+        # Realizamos la suma
+        resultado = num1 + num2
+        await ctx.send(f'La suma de {num1} y {num2} es: {resultado}')
+    except ValueError:
+        # Si no se pueden convertir a enteros, enviamos un mensaje de error
+        await ctx.send('Por favor, asegúrate de ingresar números válidos.')
+
 
 
 token = ""
