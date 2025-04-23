@@ -1,5 +1,9 @@
 import discord
 from discord.ext import commands
+import os # Para manejar archivos y directorios
+import random # Para generar números aleatorios
+
+import requests 
 
 
 intents = discord.Intents.default()
@@ -97,6 +101,70 @@ async def sumar(ctx, num1: str, num2: str):
     except ValueError:
         # Si no se pueden convertir a enteros, enviamos un mensaje de error
         await ctx.send('Por favor, asegúrate de ingresar números válidos.')
+
+@bot.command()
+async def mem1(ctx):
+    with open('imagenes/mem1.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
+
+@bot.command()
+async def mem2(ctx):
+    with open('imagenes/mem2.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
+
+@bot.command()
+async def mem3(ctx):
+    with open('imagenes/mem3.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
+
+@bot.command()
+async def mem4(ctx):
+    with open('imagenes/mem4.jpg', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file=picture)
+
+@bot.command()
+async def meme_aleatorio(ctx):
+    
+    img_name = random.choice(os.listdir('imagenes'))
+    
+    with open(f'imagenes/{img_name}', 'rb') as file:
+        
+        picture = discord.File(file)
+        
+        await ctx.send(file=picture)
+
+def get_dog_image_url():    
+    url = 'https://random.dog/woof.json'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+@bot.command('perro')
+async def perro(ctx):
+    '''Una vez que llamamos al comando duck, 
+    el programa llama a la función get_dog_image_url'''
+    image_url = get_dog_image_url()
+    await ctx.send(image_url)
+
+#https://randomfox.ca/
+
+def get_fox_image_url():    
+    url = 'https://randomfox.ca/'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+@bot.command('zorro')
+async def zorro(ctx):
+    '''Una vez que llamamos al comando duck, 
+    el programa llama a la función get_fox_image_url'''
+    image_url = get_fox_image_url()
+    await ctx.send(image_url)
+
 
 
 
